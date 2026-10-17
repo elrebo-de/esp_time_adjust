@@ -1,0 +1,12 @@
+version: "1.0.0"
+license: "Apache-2.0"
+description: "Time synchronisation component (with manual adjustment) for ESP-IDF version 5.5.0+ using a C++ class"
+url: "https://elrebo.de/index.php/2026/10/17/esp_time_adjust/"
+issues: "https://github.com/elrebo-de/esp_time_adjust/issues"
+repository: "https://github.com/elrebo-de/esp_time_adjust.git"
+maintainers:
+  - Christoph Oberle <christoph.oberle@elrebo.de>
+files:
+  use_gitignore: true
+dependencies:
+  idf: ">=5.5.0"
