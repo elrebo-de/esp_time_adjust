@@ -129,6 +129,9 @@ void TimeAdjust::obtainTime(void)
     int retry = 0;
     const int retry_count = 10;
 
+    time(&now);
+    localtime_r(&now, &timeinfo);
+
     while (timeinfo.tm_year < (2025 - 1900) && ++retry < retry_count)
     {
         ESP_LOGI(tag.c_str(), "  ObtainTime: Waiting for system time to be set... (%d/%d)", retry, retry_count);

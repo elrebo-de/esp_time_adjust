@@ -97,6 +97,7 @@ To initialize the class, you use these methods:
 * `setTimezone()` to set the timezone. The default is the current value of the environment variable TZ.
 * `setSyncIntervalMs()` to set the synchronization interval. The default is 5 minutes. You can use this value through method `getSyncIntervalMs()` in your own code which calls method `adjustTime()` to adjust the system time.
 * Method `obtainTime` can be used to wait for synchronization and set the privat flag `timeSynchronized`. This flag can be retrieved by method `isSynchronized()`.
+
 In addition there is a method `printCalendar()` to report the current system time.
 
 ### External Effects
