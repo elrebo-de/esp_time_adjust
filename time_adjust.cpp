@@ -98,6 +98,9 @@ std::string TimeAdjust::adjustTime(std::string date, std::string time)
         return std::string("");
     };
 
+    // set internal state
+    this->obtainTime();
+
     // format result
     char buf[64];
     strftime(buf, sizeof(buf), "%d.%m.%Y %H:%M:%S %Z", &local_tm);
