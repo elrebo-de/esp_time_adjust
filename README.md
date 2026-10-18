@@ -102,7 +102,7 @@ In addition there is a method `printCalendar()` to report the current system tim
 
 ### External Effects
 
-* Usage of method `adjustTime()` changes the system time.
+* Usage of method `adjustTime()` changes the system time and temporarily resets the environment variable `TZ`.
 * Usage of method `setTimezone()` changes the environment variable `TZ`.
 
 ```C++
@@ -149,6 +149,9 @@ class TimeAdjust
 };
 ```
 
+Because the method `adjustTime()` resets the environment variable `TZ` temporarily, it is protected by a global mutex semaphore `tz_mutex`. The same mutex protects method `setTimezone()`.
+
+When using this class you should always use TimeAdjust::setTimezone() to change the environment variable `TZ`.
 
 # License
 This component is provided under the Apache-2.0 license.

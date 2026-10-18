@@ -154,8 +154,20 @@ void TimeAdjust::obtainTime(void)
 void TimeAdjust::setTimezone(std::string timezone)
 {
     ESP_LOGI(tag.c_str(), "Set Timezone: %s", timezone.c_str());
-    setenv("TZ", timezone.c_str(), 1); // Set the TZ environment variable
-    tzset(); // Apply the timezone change
+
+    // initialize Mutex lazily at first call
+    if (tz_mutex == NULL) {
+        tz_mutex = xSemaphoreCreateMutexStatic(&mutex_buffer);
+    }
+
+    // lock Mutex (waits forever until Mutex is free
+    if (xSemaphoreTake(tz_mutex, portMAX_DELAY) == pdTRUE) {
+        setenv("TZ", timezone.c_str(), 1); // Set the TZ environment variable
+        tzset(); // Apply the timezone change
+
+        // unlock Mutex
+        xSemaphoreGive(tz_mutex);
+    }
 }
 
 // Print current calendar information

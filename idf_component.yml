@@ -1,4 +1,4 @@
-version: "1.0.1"
+version: "1.0.2"
 license: "Apache-2.0"
 description: "Time synchronisation component (with manual adjustment) for ESP-IDF version 5.5.0+ using a C++ class"
 url: "https://www.elrebo.de/index.php/2026/10/17/esp_time_adjust/"
